@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myfirstpod
+  namespace: test
+  labels:
+    type: backend
+    app: V1
+
+spec:
+  containers:
+    - name: nginxcusto
+      image: coolgourav147/nginx-custom

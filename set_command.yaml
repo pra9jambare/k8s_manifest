@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysecondpod
+  labels:
+    type: app
+spec:
+  containers:
+    - name: setcommand
+      image: coolgourav147/nginx-custom:v2
+      env:
+        - name: myname
+          value: Pranav
+        - name: city
+          value: Mumbai
+      args: [ "sleep", "30" ]

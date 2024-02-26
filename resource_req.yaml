@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstreqdeploy
+  labels:
+    name: firstdeploy
+  annotations:
+    kubernetes.io/change-cause: "Now roll down to version v1"
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      name: myreqpod
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginxcusto
+          image: coolgourav147/nginx-custom:v1 
+          resources:
+            requests:
+              memory: 200Mi
+              cpu: 100m
+            limits:
+              memory: 300Mi
+              cpu: 200m

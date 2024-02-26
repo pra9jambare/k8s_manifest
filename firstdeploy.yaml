@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: firstdeploy
+  labels:
+    name: firstdeploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp
+  volumes:
+    - name: testvol
+      configMap:
+        name: cm2
+  template:
+    metadata:
+      name: mypod
+      labels:
+        app: myapp
+    spec:
+      containers:
+        - name: nginxcusto
+          image: coolgourav147/nginx-custom:v1
+          imagePullPolicy: Never
+          volumeMounts:
+            - name: testvol
+              mountPath: /config
+              readOnly: true
+      volumes:
+      - name: testvol
+        configMap:
+              name: cm2
+
+
+
+#          envFrom:
+#           - configMapRef:
+#                name: envfmcm
+
+#          env:
+#            - name: var1
+#              valueFrom:
+#                configMapKeyRef:
+#                  key: username
+#                  name: envcm
+#            - name: var2
+#              valueFrom:
+#                configMapKeyRef:
+#                  key: env.sh
+#                  name: envfmcm

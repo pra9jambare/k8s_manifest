@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+    - name: nginxcusto
+      image: coolgourav147/nginx-custom:v1
+      imagePullPolicy: Never
+      volumeMounts:
+       - name: testvol
+         mountPath: "/config"
+         readOnly: true    
+  
+  volumes:
+   - name: testvol
+     configMap:
+           name: cm2

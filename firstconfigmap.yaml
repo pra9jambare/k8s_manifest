@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  #name: Pranav
+  #id: "12424"
+  #username: pra9
+  key1: |
+    this is my key
+    and my data
+  key2: |
+    this is my key
+    and my data
+kind: ConfigMap
+metadata:
+  name: firstconfigmap
