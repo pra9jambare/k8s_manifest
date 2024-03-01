@@ -1,18 +1,15 @@
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: DaemonSet
 metadata:
-  name: firstdeploy
-  labels:
-    name: firstdeploy
+  name: deamon
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: myapp
   template:
     metadata:
-      name: mypod
+      name: mydaemonpod
       labels:
         app: myapp
     spec:
@@ -20,4 +17,3 @@ spec:
         - name: nginxcustom
           image: coolgourav147/nginx-custom:v1
           imagePullPolicy: Never
-
